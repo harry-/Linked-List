@@ -22,7 +22,7 @@
     <VCProjectVersion>15.0</VCProjectVersion>
     <ProjectGuid>{4EE4FA28-241A-4CE7-BFEB-4E0425499976}</ProjectGuid>
     <RootNamespace>VerketteListe</RootNamespace>
-    <WindowsTargetPlatformVersion>10.0.15063.0</WindowsTargetPlatformVersion>
+    <WindowsTargetPlatformVersion>10.0.16299.0</WindowsTargetPlatformVersion>
     <ProjectName>LinkedList</ProjectName>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
@@ -117,6 +117,8 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="Animal.h" />
+    <ClInclude Include="LinkedList.h" />
+    <ClInclude Include="main.h" />
     <ClInclude Include="Person.h" />
     <ClInclude Include="LinkedListElement.h" />
   </ItemGroup>

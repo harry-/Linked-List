@@ -5,35 +5,36 @@ class LinkedListElement
 
 private:
 
-	T content_;
+	T *content_;
 	LinkedListElement<T>* next_;
 	LinkedListElement<T>* previous_;
 
 public:
 
-	T getContent() { return content_; }
+	T* getContent() { return content_; }
 	LinkedListElement<T>* getNext() { return next_; }
 	LinkedListElement<T>* getPrevious() { return previous_; }
 
 	LinkedListElement()
 	{
-		next_ = NULL;
-		previous_ = NULL;
+		next_ = nullptr;
+		previous_ = nullptr;
+		content_ = new T();
 	}
 
 	LinkedListElement(T content, LinkedListElement<T> * next, LinkedListElement<T> * previous)
 	{
-		next_ = NULL;
-		previous_ = NULL;
+		next_ = nullptr;
+		previous_ = nullptr;
 
-		SetContent(content);
-		SetPrevious(previous);
-		SetNext(next);
+		setContent(&content);
+		setPrevious(previous);
+		setNext(next);
 	}
 
-	void setContent(T content)
+	void setContent(T *content)
 	{
-		content_ = content;
+		content_ = new T(*content);
 	}
 
 	void setNext(LinkedListElement<T> * next)
@@ -49,7 +50,7 @@ public:
 	LinkedListElement<T>* insert(T content)
 	{
 		LinkedListElement<T>* newListElement = new LinkedListElement<T>();
-		newListElement->setContent(content);
+		newListElement->setContent(&content);
 		newListElement->setNext(getNext());
 		newListElement->setPrevious(this);
 		setNext(newListElement);

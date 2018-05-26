@@ -8,5 +8,5 @@ void Animal::setName(std::string  name)
 
 void Animal::Display()
 {
-	printf("Name....: %s\n", name_);
+	std::cout << name_;
 }
