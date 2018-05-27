@@ -1,7 +1,8 @@
 #pragma once
 #include <string>
+#include "LinkedList.h"
 
-class Animal
+class Animal : public LinkedList
 {
 
 private:
@@ -15,6 +16,7 @@ public:
 	void setName(std::string name);
 	std::string getName() { return name_; }
 
-	void Display();
+	void display();
+	void displayAll();
 };
 

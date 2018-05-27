@@ -1,37 +1,66 @@
 #pragma once
-#include "LinkedListElement.h"
 
-template<typename T>
+/**	
+*	Derived classes will inherit linked list functionality.
+*	Pointers to the first and last list members are stored as static members. There is no separate class for the actual list. All objects can take function calls that will affect the entire list.
+*	The main drawback of this concept is that there can only be one list at any given point...
+*/
+
 class LinkedList
 {
 
 private:
 
-	LinkedListElement<T>* first_{ nullptr };
-	LinkedListElement<T>* last_{ nullptr };
+	static LinkedList* first_;
+	static LinkedList* last_;
+	LinkedList* next_;
+	LinkedList* previous_;
 
 public:
 
-	LinkedListElement<T>* getFirst() { return first_; }
-	LinkedListElement<T>* getLast() { return last_; }
+	LinkedList* getFirst() { return first_; }
+	LinkedList* getLast() { return last_; }
 
-	void setFirst(LinkedListElement<T>* first) { first_ = first; }
-	void setLast(LinkedListElement<T>* last) { last_ = last; }
+	void setFirst( LinkedList* first) { first_ = first; }
+	void setLast(LinkedList* last) { last_ = last; }
 
-	void add(T content)
+	LinkedList* getNext() { return next_; }
+	LinkedList* getPrevious() { return previous_; }
+
+	void setNext( LinkedList* next) { next_ = next; }
+	void setPrevious(LinkedList* previous) { previous_ = previous; }
+
+	LinkedList() = default;
+
+	LinkedList(LinkedList & original, LinkedList * next, LinkedList * previous)
 	{
-		LinkedListElement<T>* newElement = new LinkedListElement<T>(content, nullptr, last_);
+		next_ = nullptr;
+		previous_ = nullptr;
+
+		*this = original;
+		setPrevious(previous);
+		setNext(next);
+	}
+
+	/**
+	 *	Append a new element at the end of the list.
+	*/
+	void add(LinkedList element)
+	{
+		LinkedList* newElement = new LinkedList(element, nullptr, last_);
 
 		/* adding to an existing list */
-		if (first_ != nullptr)
+		if (LinkedList::first_ != nullptr)
 		{
 			getLast()->setNext(newElement);
-			last_ = newElement;
+			LinkedList::last_ = newElement;
 		} else 
 		/* the list was empty, so let's initalize it with this first object */
 		{
-			first_ = newElement;
-			last_ = newElement;
+			LinkedList::first_ = this;
+			LinkedList::last_ = newElement;
 		}
 	}
+
+	virtual void display() {}
 };
