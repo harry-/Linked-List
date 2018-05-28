@@ -34,4 +34,13 @@ public:
 			last_ = newElement;
 		}
 	}
+	void destroy()
+	{
+		LinkedListElement<T>* newIndex = nullptr;
+		for (LinkedListElement<T>* index = first_; index != last_; index = newIndex)
+		{
+			LinkedListElement<T>* newIndex = index->getNext();
+			delete index;
+		}
+	}
 };

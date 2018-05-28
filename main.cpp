@@ -3,7 +3,7 @@
 #include "Animal.h"
 #include "LinkedListElement.h"
 #include "LinkedList.h"
-#include "main.h"
+
 
 int main(void)
 {
@@ -12,21 +12,15 @@ int main(void)
 
 	l1->setNext(l2);
 	l2->setPrevious(l1);
-	typedef LinkedListElement<Person> p;
+
 	
 
-	p p1;
-	p p2;
-	p1.getContent()->setLastName("hallo");
-	p2.getContent()->setLastName("servus");
 
-	p1.setNext(&p2);
-	p2.setPrevious(&p1);
 
 	typedef LinkedListElement<Animal> a;
 	typedef LinkedListElement<Animal>* pa;
 
-	a a1;
+	/*a a1;
 	a a2;
 
 	a1.getContent()->setName("Tiger");
@@ -41,35 +35,37 @@ int main(void)
 	a4->setPrevious(a3);
 
 	a3->getContent()->setName("Ein Tier");
-	a4->getContent()->setName("Noch ein Tier");
+	a4->getContent()->setName("Noch ein Tier");*/
+
+
+
+	//LinkedListElement<Animal>* cc = new LinkedListElement<Animal>();
+	//LinkedListElement<Animal>* bb = new LinkedListElement<Animal>();
+
+	//cc->setContent(&c);
+	//bb->setContent(&b);
+
+	//bb->setNext(cc);
+	//cc->setPrevious(bb);
 
 	Animal c("viech");
 	Animal b("viech2");
-
-
-	LinkedListElement<Animal>* cc = new LinkedListElement<Animal>();
-	LinkedListElement<Animal>* bb = new LinkedListElement<Animal>();
-
-	cc->setContent(&c);
-	bb->setContent(&b);
-
-	bb->setNext(cc);
-	cc->setPrevious(bb);
-
 	Animal d("viech3");
 
-	pa pd = bb->insert(d);
+	//pa pd = bb->insert(d);
 
-	pd->deleteElement();
-	bb->deleteElement();
+	//pd->deleteElement();
+	//bb->deleteElement();
 
 	LinkedList<Animal> animals;
-	animals.add(d);
 	animals.add(c);
 	animals.add(b);
+	animals.add(d);
+
+	animals.destroy();
 
 	
-
-	return 1;
+	_CrtSetDbgFlag(_CRTDBG_ALLOC_MEM_DF | _CRTDBG_LEAK_CHECK_DF);
+	return 0;
 }
 
