@@ -40,7 +40,9 @@ private:
     static int count_;
 	bool operator==(Person& theOtherPerson)
 	{
-		if (std::strcmp(.c_str(), theOtherPerson.getFirstName().c_str()) == 0)
+		if (std::strcmp(first_name_, theOtherPerson.getFirstName()) == 0 &&
+			std::strcmp(last_name_, theOtherPerson.getLastName()) &&
+			year_of_birth_ == theOtherPerson.getYearOfBirth() )
 			return 1;
 		else
 			return 0;
