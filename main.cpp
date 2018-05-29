@@ -4,7 +4,6 @@
 #include "LinkedListElement.h"
 #include "LinkedList.h"
 
-
 int main(void)
 {
 	Animal c("viech");
@@ -19,8 +18,6 @@ int main(void)
 
 	//animals.remove(b);
 	//animals.remove(c);
-
-
 	
 	Person p1("ich", "selbst", 1999);
 	Person p2("noch", "jemand", 3333);
@@ -31,9 +28,8 @@ int main(void)
 
 	animals.add(Animal("viech6"));
 
-	persons.display();
+	persons.display();	
 	animals.display();
-
 
 //	animals.destroy();
 	_CrtSetDbgFlag(_CRTDBG_ALLOC_MEM_DF | _CRTDBG_LEAK_CHECK_DF);

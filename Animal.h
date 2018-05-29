@@ -17,12 +17,7 @@ public:
 
 	void display();
 
-	bool operator==(Animal& theOtherAnimal)
-	{
-		if (std::strcmp(name_.c_str(), theOtherAnimal.getName().c_str()) == 0)
-			return 1;
-		else
-			return 0;
-	}
+	bool operator==(Animal& theOtherAnimal);
+	bool compareName(std::string name);
 };
 

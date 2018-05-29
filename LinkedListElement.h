@@ -8,6 +8,7 @@ private:
 	T *content_;
 	LinkedListElement<T>* next_;
 	LinkedListElement<T>* previous_;
+	
 
 public:
 
