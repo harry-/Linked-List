@@ -1,97 +1,150 @@
 #include "Person.h"
-#include <iostream>
 
+
+//
+int Person::count_ = 0;
 
 Person::Person()
 {
-	firstName_ = NULL;
-	lastName_ = NULL;
+    year_of_birth_ = 5;
+    first_name_ = nullptr;
+    last_name_ = nullptr;
 }
 
-Person::Person(char * firstName, char * lastName)
-{
-	firstName_ = NULL;
-	lastName_ = NULL;
-	setFirstName(firstName);
-	setLastName(lastName);
-}
 
 Person::~Person()
 {
-	if (firstName_)
-		delete[] firstName_;
-
-	if (lastName_)
-		delete[] lastName_;
+    if (first_name_)
+        delete[] first_name_;
+    if (last_name_)
+        delete[] last_name_;
 }
 
-Person::Person(Person & orig)
+Person::Person(const char * first_name, const char * last_name, int year)
 {
-	firstName_ = NULL;
-	lastName_ = NULL;
-
-	setFirstName(orig.firstName_);
-	setLastName(orig.lastName_);
+    year_of_birth_ = 5;
+    first_name_ = nullptr;
+    last_name_ = nullptr;
+    setFirstName(first_name);
+    setLastName(last_name);
+    setYearOfBirth(year);
 }
 
-Person &Person::operator=(Person & orig)
+Person::Person(Person & person)
 {
-	// TODO: hier Rückgabeanweisung eingeben
-	if (this == &orig)
-		return *this;
+    year_of_birth_ = 5;
 
-	setFirstName(orig.firstName_);
-	setLastName(orig.lastName_);
-
-	return *this;
+    first_name_ = nullptr;
+    last_name_ = nullptr;
+    setFirstName(person.first_name_);
+    setLastName(person.last_name_);
+    setYearOfBirth(person.year_of_birth_);
 }
 
-void Person::setFirstName(char * firstName)
+Person & Person::operator=(Person & person)
 {
-	if (firstName_)
-	{
-		delete[] firstName_;
-		firstName_ = NULL;
-	}
+    if (this == &person)
+        return *this;
+    year_of_birth_ = 5;
 
-	int nLen;
+	// hier doch deletes? todo
+    first_name_ = nullptr;
+    last_name_ = nullptr;
 
-	if (firstName != NULL && (nLen = strlen(firstName)))
-	{
-		firstName_ = new char[nLen + 1];
-
-		if (firstName_)
-		{
-			strcpy(firstName_, firstName);
-		}
-	}
+    setFirstName(person.first_name_);
+    setLastName(person.last_name_);
+    setYearOfBirth(person.year_of_birth_);
+    return *this;
 }
 
-void Person::setLastName(char * lastName)
+bool Person::setFirstName(const char * first_name)
 {
-	if (lastName_)
-	{
-		delete[] lastName_;
-		lastName_ = NULL;
-	}
+    if (!first_name)
+    {
+        std::cerr << "setFirstName called with invalid argument\n";
+        return false;
+    }
 
-	int nLen;
+    if (first_name_)
+    {
+        delete[] first_name_;
+        first_name_ = nullptr;
+    }
 
-	if (lastName != NULL && (nLen = strlen(lastName)))
-	{
-		lastName_ = new char[nLen + 1];
+    first_name_ = new char[strlen(first_name) + 1];
 
-		if (lastName_)
-		{
-			strcpy(lastName_, lastName);
-		}
-	}
+    if (!first_name)
+    {
+        std::cerr << "memory allocation failed\n";
+        return false;
+    }
+
+    copy2(first_name, first_name_);
+
+    return true;
 }
 
-
-
-void Person::Display()
+bool Person::setLastName(const char * last_name)
 {
-	printf("Vorname.....: %s\n", (firstName_ ? firstName_ : "Noch nicht vorhanden"));
-	printf("Nachname....: %s\n", (lastName_ ? lastName_ : "Noch nicht vorhanden"));
+    if (!last_name)
+    {
+        std::cerr << "setFirstName called with invalid argument\n";
+        return false;
+    }
+
+    if (last_name_)
+    {
+        delete[] last_name_;
+        last_name_ = nullptr;
+    }
+
+    last_name_ = new char[strlen(last_name) + 1];
+
+    if (!last_name)
+    {
+        std::cerr << "memory allocation failed\n";
+        return false;
+    }
+
+    copy2(last_name, last_name_);
+
+    return true;;
 }
+
+bool Person::setYearOfBirth(const int year)
+{
+    year_of_birth_ = year;
+    return true;
+}
+
+bool Person::display()
+{
+    std::cout << first_name_ << ' ' << last_name_ << ", " << year_of_birth_ << '\n';
+    return true;
+}
+
+char * Person::getFirstName()
+{
+    return first_name_;
+}
+
+char * Person::getLastName()
+{
+    return last_name_;
+}
+
+int Person::getYearOfBirth()
+{
+    return year_of_birth_;
+}
+
+int Person::getCount()
+{
+    return Person::count_;
+}
+
+int Person::raiseCount()
+{
+    return Person::count_++;
+}
+

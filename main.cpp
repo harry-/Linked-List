@@ -7,18 +7,18 @@
 
 int main(void)
 {
-	LinkedListElement<int>* l1 = new LinkedListElement<int>();
-	LinkedListElement<int>* l2 = new LinkedListElement<int>();
+	//LinkedListElement<int>* l1 = new LinkedListElement<int>();
+	//LinkedListElement<int>* l2 = new LinkedListElement<int>();
 
-	l1->setNext(l2);
-	l2->setPrevious(l1);
+	//l1->setNext(l2);
+	//l2->setPrevious(l1);
 
-	
+	//
 
 
 
-	typedef LinkedListElement<Animal> a;
-	typedef LinkedListElement<Animal>* pa;
+	//typedef LinkedListElement<Animal> a;
+	//typedef LinkedListElement<Animal>* pa;
 
 	/*a a1;
 	a a2;
@@ -62,8 +62,9 @@ int main(void)
 	animals.add(b);
 	animals.add(d);
 
-	animals.destroy();
+	animals.remove(b);
 
+//	animals.destroy();
 	
 	_CrtSetDbgFlag(_CRTDBG_ALLOC_MEM_DF | _CRTDBG_LEAK_CHECK_DF);
 	return 0;
