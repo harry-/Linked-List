@@ -22,6 +22,11 @@ public:
 		content_ = new T();
 	}
 
+	~LinkedListElement()
+	{
+		delete content_;
+	}
+
 	LinkedListElement(T content, LinkedListElement<T> * next, LinkedListElement<T> * previous)
 	{
 		next_ = nullptr;

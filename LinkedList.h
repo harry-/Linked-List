@@ -1,6 +1,11 @@
 #pragma once
 #include "LinkedListElement.h"
 
+
+/**
+ *	templated linked list class.
+ *	usage: LinkedList<your class>; 
+ */
 template<typename T>
 class LinkedList
 {
@@ -54,6 +59,10 @@ public:
 			newIndex = index->getNext();
 			if (*(index->getContent()) == content)
 			{
+				if (index == first_)
+					first_ = index->getNext();
+				if (index == last_)
+					last_ = index->getPrevious();
 				index->deleteElement();
 			}
 		}
@@ -66,6 +75,16 @@ public:
 		{
 			newIndex = index->getNext();
 			delete index;
+		}
+	}
+
+	void display()
+	{
+		for (LinkedListElement<T>* index = first_;; index = index->getNext())
+		{
+			index->getContent()->display();
+			if (index == last_)
+				break;
 		}
 	}
 };

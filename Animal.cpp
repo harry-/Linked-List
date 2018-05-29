@@ -6,7 +6,7 @@ void Animal::setName(std::string  name)
 	name_ = name ;
 }
 
-void Animal::Display()
+void Animal::display()
 {
-	std::cout << name_;
+	std::cout << name_ << '\n';
 }

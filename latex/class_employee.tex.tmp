@@ -1,0 +1,17 @@
+\hypertarget{class_employee}{}\section{Employee Class Reference}
+\label{class_employee}\index{Employee@{Employee}}
+
+
+Inheritance diagram for Employee\+:
+% FIG 0
+
+
+Collaboration diagram for Employee\+:
+% FIG 1
+\subsection*{Additional Inherited Members}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+Employee.\+h\item 
+Employee.\+cpp\end{DoxyCompactItemize}

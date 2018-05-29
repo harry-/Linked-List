@@ -15,7 +15,7 @@ public:
 	void setName(std::string name);
 	std::string getName() { return name_; }
 
-	void Display();
+	void display();
 
 	bool operator==(Animal& theOtherAnimal)
 	{
